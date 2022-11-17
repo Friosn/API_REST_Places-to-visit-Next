@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const natureAreasSchema = new mongoose.Schema(
+const natureAreaSchema = new mongoose.Schema(
   {
     name: { type: String, require: true },
     country: { type: String, require: true },
@@ -13,6 +13,6 @@ const natureAreasSchema = new mongoose.Schema(
   }
 );
 
-const NaturAreas = mongoose.model("nature", natureAreasSchema);
+const Nature = mongoose.model("nature", natureAreaSchema);
 
-module.exports = NaturAreas;
+module.exports = Nature;
