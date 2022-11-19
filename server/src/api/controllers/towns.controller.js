@@ -60,7 +60,7 @@ const updateTown = async (req, res, next) => {
     const town = new Towns(req.body);
     town._id = id;
 
-    const updatedTown = await Towns.findById(id);
+    const updatedTown = await Towns.findByIdAndUpdate(id);
     return res.status(200).json(updatedTown);
   } catch (error) {
     return next(error);
