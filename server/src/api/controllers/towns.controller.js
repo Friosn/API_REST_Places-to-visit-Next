@@ -10,7 +10,7 @@ const getTowns = async (req, res, next) => {
     return next(error);
   }
 };
-const getById = async (req, res, next) => {
+const getTownsById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const townId = await Towns.getById(id);
@@ -20,7 +20,7 @@ const getById = async (req, res, next) => {
   }
 };
 
-const getByName = async (req, res, next) => {
+const getTownsByName = async (req, res, next) => {
   try {
     const { name } = req.params;
     const townName = await Towns.findOne(name);
@@ -30,7 +30,7 @@ const getByName = async (req, res, next) => {
   }
 };
 
-const getByContinent = async (req, res, next) => {
+const getTownsByContinent = async (req, res, next) => {
   try {
     const { continent } = req.params;
     const townsContinent = await Towns.findOne(continent);
@@ -38,4 +38,53 @@ const getByContinent = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
+};
+
+//--------------------- POST  TOWN---------------------
+
+const postTown = async (req, res, next) => {
+  try {
+    const town = new Towns(req.body); //create
+    const saveTownInDB = await town.save(); // save into DB
+    return res.status(201).json(saveTownInDB); // inform of the success
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//--------------------- UPDATE TOWN --------------------
+
+const updateTown = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const town = new Towns(req.body);
+    town._id = id;
+
+    const updatedTown = await Towns.findById(id);
+    return res.status(200).json(updatedTown);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//----------------------- DELETE TOWN --------------------
+
+const deleteTown = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const toDeleteTown = await Towns.findByIdAndDelete(id);
+    return res.status(200).json(toDeleteTown);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+module.exports = {
+  getTowns,
+  getTownsById,
+  getTownsByName,
+  getTownsByContinent,
+  postTown,
+  updateTown,
+  deleteTown,
 };
