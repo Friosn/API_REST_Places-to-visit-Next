@@ -3,11 +3,23 @@ const cors = require("cors");
 
 const connect = require("./utils/database/db");
 
+const TownRoutes = require("./api/routes/towns.routes");
+const NaturalRoutes = require("./api/routes/naturalAreas.routes");
+const CountryRoutes = require("./api/routes/countries.routes");
+
 connect();
 
 const server = express();
 
 server.use(cors());
+
+//FINAL STEP after the reoute's creation!!!-----------------
+
+server.use("/api/towns", TownRoutes);
+server.use("/api/habitat", NaturalRoutes);
+server.use("/api/country", CountryRoutes);
+
+//-------------------------------------------------
 
 /* server.use(express.json()); */
 
