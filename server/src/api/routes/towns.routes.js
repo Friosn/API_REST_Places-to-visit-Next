@@ -20,4 +20,4 @@ TownRoutes.post("/", postTown);
 TownRoutes.patch("/:id", updateTown);
 TownRoutes.delete("/:id", deleteTown);
 
-module.exports = PlayerRoutes;
+module.exports = TownRoutes;
