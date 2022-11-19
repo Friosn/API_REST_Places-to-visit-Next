@@ -4,11 +4,11 @@
   "description": "Where to go, what to visit, new things to discover, just travel.",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js",
     "start":"node ./src/index.js"
   },
   "keywords": ["api-rest", "travel", "visit", "discover"],
-  "author": "",
+  "author": "Francisco Ríos Niño  <franz.rios.nino@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

@@ -6,7 +6,11 @@ const countrySchema = new mongoose.Schema(
     language: { type: String, require: true },
     continent: { type: String, require: true },
     origin: { type: String },
-    spots: { type: mongoose.Schema.Types.ObjectId, ref: "town", require: true },
+    spots: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: ["town", "nature"],
+      require: true,
+    },
   },
   {
     timestamps: true,
